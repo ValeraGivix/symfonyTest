@@ -36,7 +36,9 @@ class Worker
      */
     public function setAge($age): void
     {
-        $this->age = $age;
+        if ($this->checkAge($age)){
+            $this->age = $age;
+        }
     }
 
     /**
@@ -53,6 +55,15 @@ class Worker
     public function setSalary($salary): void
     {
         $this->salary = $salary;
+    }
+
+    public function checkAge($age)
+    {
+        if ($age > 1 && $age < 100) {
+            return true;
+        }
+
+        return false;
     }
 
 }

@@ -36,9 +36,7 @@ class Worker
      */
     public function setAge($age): void
     {
-        if ($this->checkAge($age)){
-            $this->age = $age;
-        }
+        $this->age = $age;
     }
 
     /**
@@ -57,28 +55,17 @@ class Worker
         $this->salary = $salary;
     }
 
-    public function checkAge($age)
+    public function __construct($name, $age, $salary)
     {
-        if ($age > 1 && $age < 100) {
-            return true;
-        }
-
-        return false;
+        $this->setName($name);
+        $this->age = $age;
+        $this->salary = $salary;
     }
-
 }
+$one = new Worker('Vasia', 25, 1000);
+$two = new Worker('Vania', 26, 2000);
 
-$one = new Worker();
+echo $one->getSalary() + $two->getSalary();
+echo $one->getAge() + $two->getAge();
 
-$one->setName('Ivan');
-$one->setAge(25);
-$one->setSalary(1000);
-
-$two = new Worker();
-
-$two->setName('Vasia');
-$two->setAge(26);
-$two->setSalary(2000);
-
-print $one->getSalary() + $two->getSalary();
-print $one->getAge() + $two->getAge();
+$s=2;

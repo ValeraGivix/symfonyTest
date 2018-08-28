@@ -1,71 +1,57 @@
 <?php
 
 
-class Worker
+class User
 {
-    private $name;
-    private $age;
-    private $salary;
+    protected $name;
+    protected $age;
 
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
-    /**
-     * @param mixed $name
-     */
     public function setName($name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAge()
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setAge($age)
+    {
+       $this->age = $age;
+    }
+    public function  getAge()
     {
         return $this->age;
     }
+}
+class Worker extends User
+{
+    private $salary;
 
-    /**
-     * @param mixed $age
-     */
-    public function setAge($age): void
-    {
-        $this->age = $age;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSalary()
-    {
-        return $this->salary;
-    }
-
-    /**
-     * @param mixed $salary
-     */
     public function setSalary($salary): void
     {
         $this->salary = $salary;
     }
 
-    public function __construct($name, $age, $salary)
+    public function getSalary()
     {
-        $this->setName($name);
-        $this->age = $age;
-        $this->salary = $salary;
+        return $this->salary;
     }
 }
-$one = new Worker('Vasia', 25, 1000);
-$two = new Worker('Vania', 26, 2000);
 
-echo $one->getSalary() + $two->getSalary();
-echo $one->getAge() + $two->getAge();
+$one = new Worker();
+$one->setSalary(1000);
+$one->setName('Ivan');
+$one->setAge(25);
 
-$s=2;
+$two = new Worker();
+$two->setSalary(2000);
+$two->setName('Vasia');
+$two->setAge(25);
+
+print $one->getSalary() + $two->getSalary();
+print $one->getAge() + $two->getAge();
+$r=9;
+

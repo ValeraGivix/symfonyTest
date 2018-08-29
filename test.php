@@ -1,57 +1,82 @@
 <?php
 
 
-class User
+class Form
 {
-    protected $name;
-    protected $age;
-
-
-    public function setName($name): void
+    public function input($array)
     {
-        $this->name = $name;
+        $result = '<input ';
+
+        $result .= $this->generate($array);
+
+        return $result.'>';
     }
 
-    public function getName()
+    public function password($a)
     {
-        return $this->name;
+        $result = '<input ';
+
+        $a['type'] = 'password';
+
+        $result .= $this->generate($a);
+
+        return $result.'>';
     }
 
-    public function setAge($age)
+    public function submit($a)
     {
-       $this->age = $age;
+        $result = '<input ';
+
+        $a['type'] = 'submit';
+
+        $result .= $this->generate($a);
+
+        return $result.'>';
     }
-    public function  getAge()
+
+    public function open($array)
     {
-        return $this->age;
+        $result = '<form ';
+
+        $result .= $this->generate($array);
+
+        return $result.'>';
     }
+
+    public function textarea($a)
+    {
+        $result = '<textarea ';
+
+        $value = $a['value'];
+        unset($a['value']);
+
+        $result .= $this->generate($a);
+
+        return $result.'>'.$value.'</textarea>';
+    }
+
+    public function close()
+    {
+        return "</form>";
+
+    }
+
+    private function generate($array)
+    {
+        $result = '';
+        foreach ($array as $key => $value) {
+            $result = $result.$key.'="'.$value.'" ';
+        }
+
+        return $result;
+    }
+
 }
-class Worker extends User
-{
-    private $salary;
 
-    public function setSalary($salary): void
-    {
-        $this->salary = $salary;
-    }
 
-    public function getSalary()
-    {
-        return $this->salary;
-    }
-}
+$form = new Form();
 
-$one = new Worker();
-$one->setSalary(1000);
-$one->setName('Ivan');
-$one->setAge(25);
+echo $form->password(['size' => 8, 'name' => 'Pass', 'type' => 'text']);
 
-$two = new Worker();
-$two->setSalary(2000);
-$two->setName('Vasia');
-$two->setAge(25);
-
-print $one->getSalary() + $two->getSalary();
-print $one->getAge() + $two->getAge();
-$r=9;
+$r = 9;
 

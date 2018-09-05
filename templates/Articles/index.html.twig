@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Articles List!</h1>
+<div class="container">
+    {% for article in articleList %}
+        <div class="row">
+            <div class="col-sm">
+                <a href="{{ path('article', {"id": article.id}) }}"> {{ article.title }} </a>
+            </div>
+            <div class="col-sm">
+                {{ article.anonce }}
+            </div>
+            <div class="col-sm">
+                {{ article.date|date("Y-m-d") }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

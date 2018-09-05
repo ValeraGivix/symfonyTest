@@ -17,6 +17,28 @@ class DefaultController extends Controller
 {
 
     /**
+     * @Route("/articles", name = "list")
+     * @return Response
+     */
+    public function list(){
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository(Article::class)->findAll();
+
+        return $this->render("Articles/index.html.twig", ["articleList" => $articles]);
+    }
+
+    /**
+     * @Route("/article/{id}", name = "article")
+     */
+    public function show($id){
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository(Article::class)->find($id);
+
+        return $this->render("Articles/show.html.twig", ["article" => $article]);
+    }
+
+
+    /**
      * @Route("/form", name="form")
      *
      * @param Request $request

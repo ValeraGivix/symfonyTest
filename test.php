@@ -1,5 +1,90 @@
 <?php
 
+/*
+$a = 5;
+$b = 6;
+
+
+aaa($a, $b);
+
+
+
+aaa($a, $a);
+
+aaa($b, $a);
+
+
+
+
+function aaa($num, $num2){
+    return $num
+}
+
+*/
+
+$t2 = new Task();
+$t2->setTaskText('texttext');
+$t2->getTaskText();
+
+
+
+$t = new Task();
+$t->setTaskText('text');
+
+$t->getTaskText();
+
+
+class Task
+{
+    protected $taskText;
+
+    protected $dateOfExecution;
+
+    /** @var boolean */
+    protected $done = false;
+
+    /**
+     * @return mixed
+     */
+    public function getTaskText()
+    {
+        return $this->taskText;
+    }
+
+    /**
+     * @param mixed $taskText
+     */
+    public function setTaskText($taskText): void
+    {
+        $this->taskText = $taskText;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateOfExecution()
+    {
+        return $this->dateOfExecution;
+    }
+
+    /**
+     * @param mixed $dateOfExecution
+     */
+    public function setDateOfExecution($dateOfExecution): void
+    {
+        $this->dateOfExecution = $dateOfExecution;
+    }
+
+    public function markTaskAsDone()
+    {
+        $this->done = true;
+    }
+
+}
+
+
+
+/*
 
 class Form
 {
